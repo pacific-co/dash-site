@@ -4,37 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Human Design System</title>
-  <link href="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js" rel="preload" as="script">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js" rel="preload" as="script">
   <style>
     :root {
       --font: 'DM Sans', sans-serif;
       --color-bg: #ffffff;
-      --color-text: #111827;
+      --color-text: #1f2937;
       --color-accent: #4f46e5;
       --color-subtle: #6b7280;
-      --radius: 12px;
+      --radius: 16px;
+      --transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
         --color-bg: #0f172a;
-        --color-text: #f1f5f9;
+        --color-text: #f3f4f6;
         --color-subtle: #94a3b8;
       }
     }
 
-    * {
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       font-family: var(--font);
       background: var(--color-bg);
       color: var(--color-text);
-      padding: 2rem;
+      padding: 3rem 1.5rem;
+      line-height: 1.7;
     }
 
     header {
@@ -42,19 +48,22 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 4rem;
+      flex-wrap: wrap;
+      animation: fadeIn 1s ease-out both;
     }
 
     .logo {
       font-weight: 500;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
+      letter-spacing: -0.5px;
     }
 
     nav a {
-      margin-left: 1.5rem;
+      margin-left: 1.25rem;
       text-decoration: none;
       font-weight: 500;
       color: var(--color-text);
-      transition: color 0.2s;
+      transition: color 0.2s ease;
     }
 
     nav a:hover {
@@ -62,54 +71,69 @@
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 3.25rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     h2 {
       font-size: 2rem;
       font-weight: 500;
-      margin: 2rem 0 1rem;
+      margin: 2.5rem 0 1rem;
     }
 
     p {
       font-size: 1.125rem;
-      line-height: 1.7;
       color: var(--color-subtle);
     }
 
     .section {
       max-width: 800px;
-      margin: 0 auto 3rem;
+      margin: 0 auto 4rem;
     }
 
     .card {
       background: rgba(0, 0, 0, 0.03);
       border-radius: var(--radius);
       padding: 1.5rem;
-      margin-top: 1.5rem;
-      transition: background 0.3s;
+      margin-top: 1.25rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     @media (prefers-color-scheme: dark) {
       .card {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.04);
       }
     }
 
-    .icon {
-      width: 24px;
-      height: 24px;
-      margin-right: 0.5rem;
-      vertical-align: middle;
+    .card strong {
+      color: var(--color-text);
     }
 
     footer {
       text-align: center;
-      margin-top: 5rem;
       font-size: 0.9rem;
+      margin-top: 6rem;
       color: var(--color-subtle);
+      animation: fadeIn 2s ease-out both;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
@@ -126,44 +150,42 @@
   <main>
     <div class="section">
       <h1>Human Design System</h1>
-      <p>A thoughtful, human-first approach to digital interfaces. Built for clarity, accessibility, and timeless aesthetics.</p>
+      <p style="margin-bottom: 2.5rem;">Designing with humanity in mind. A system for clarity, accessibility, and warmth in digital experiences.</p>
 
       <h2 id="principles">Design Principles</h2>
-      <div class="card">
-        <p><strong>Simplicity:</strong> Reduce noise, highlight what matters.</p>
-      </div>
-      <div class="card">
-        <p><strong>Empathy:</strong> Design with people and context in mind.</p>
-      </div>
-      <div class="card">
-        <p><strong>Clarity:</strong> Use visual hierarchy and language that guides users naturally.</p>
-      </div>
+      <div class="card reveal"><p><strong>Simplicity</strong> — remove noise, amplify meaning.</p></div>
+      <div class="card reveal"><p><strong>Empathy</strong> — prioritize human needs, not trends.</p></div>
+      <div class="card reveal"><p><strong>Clarity</strong> — elevate understanding with structure and tone.</p></div>
 
       <h2 id="components">Components</h2>
-      <div class="card">
-        <p><strong>Buttons</strong> — clear call-to-action with strong color contrast.</p>
-      </div>
-      <div class="card">
-        <p><strong>Inputs</strong> — accessible, legible, and well-spaced form controls.</p>
-      </div>
+      <div class="card reveal"><p><strong>Buttons</strong> — obvious, beautiful, accessible interactions.</p></div>
+      <div class="card reveal"><p><strong>Inputs</strong> — simple, responsive, and legible at any size.</p></div>
 
       <h2 id="tokens">Design Tokens</h2>
-      <div class="card">
-        <p><strong>Typography:</strong> DM Sans with variable weights and responsive sizing.</p>
-      </div>
-      <div class="card">
-        <p><strong>Color:</strong> Theme-aware palette with high readability and aesthetic balance.</p>
-      </div>
+      <div class="card reveal"><p><strong>Typography:</strong> DM Sans at varying weights and sizes, thoughtfully applied.</p></div>
+      <div class="card reveal"><p><strong>Color:</strong> Intuitive, theme-aware, and harmonious with content.</p></div>
     </div>
   </main>
 
   <footer>
-    &copy; 2025 Complx. Built with Lucide Icons & DM Sans.
+    &copy; 2025 Complx. Powered by Lucide Icons & crafted with care.
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
   <script>
     lucide.createIcons();
+
+    // Scroll reveal animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
