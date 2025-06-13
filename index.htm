@@ -43,6 +43,7 @@
       background: var(--bg);
       color: var(--text);
       transition: background 0.3s, color 0.3s;
+<<<<<<< HEAD
     }
 
     header {
@@ -51,10 +52,23 @@
     }
     header h1 {
       font-size: 3rem;
+=======
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 6rem 1rem 4rem;
+      text-align: center;
+      animation: fadeIn 1.2s ease-out;
+    }
+    header h1 {
+      font-size: 4rem;
+>>>>>>> 3af7906b1b2f4b2c9d912728ce81ec19cbc268ad
       font-weight: 700;
       margin: 0;
     }
     header p {
+<<<<<<< HEAD
       font-size: 1.25rem;
       font-style: italic;
       margin: 1rem 0 2rem;
@@ -62,19 +76,37 @@
     .cta-button {
       padding: 0.75rem 2rem;
       font-size: 1rem;
+=======
+      font-size: 1.5rem;
+      font-style: italic;
+      margin: 1.5rem 0 3rem;
+    }
+    .cta-button {
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+>>>>>>> 3af7906b1b2f4b2c9d912728ce81ec19cbc268ad
       border: none;
       border-radius: 999px;
       background: var(--accent);
       color: #fff;
       cursor: pointer;
+<<<<<<< HEAD
       transition: background 0.3s;
     }
     .cta-button:hover {
       background: #005ecb;
+=======
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cta-button:hover {
+      background: #005ecb;
+      transform: translateY(-3px);
+>>>>>>> 3af7906b1b2f4b2c9d912728ce81ec19cbc268ad
     }
 
     .features {
       display: grid;
+<<<<<<< HEAD
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 2rem;
       padding: 2rem 1rem;
@@ -94,14 +126,77 @@
     .feature p {
       font-size: 0.95rem;
       line-height: 1.5;
+=======
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideFadeIn 1s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+    .feature {
+      padding: 2rem;
+      border-radius: 1.5rem;
+      background: rgba(0,0,0,0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+    .feature h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .feature p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .mid-section {
+      padding: 6rem 2rem;
+      text-align: center;
+      background: var(--accent);
+      color: white;
+      animation: fadeIn 1.2s ease-out;
+    }
+    .mid-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .mid-section p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: auto;
+>>>>>>> 3af7906b1b2f4b2c9d912728ce81ec19cbc268ad
     }
 
     footer {
       text-align: center;
+<<<<<<< HEAD
       padding: 2rem 1rem;
       font-size: 0.9rem;
       opacity: 0.6;
     }
+=======
+      padding: 3rem 1rem;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideFadeIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+>>>>>>> 3af7906b1b2f4b2c9d912728ce81ec19cbc268ad
   </style>
 </head>
 <body>
@@ -126,8 +221,20 @@
     </div>
   </section>
 
+<<<<<<< HEAD
+=======
+  <section class="mid-section">
+    <h2>Made to Scale</h2>
+    <p>From your first idea to your biggest launch — Fiber grows with you.</p>
+  </section>
+
+>>>>>>> 3af7906b1b2f4b2c9d912728ce81ec19cbc268ad
   <footer>
     &copy; 2025 Fiber LLC
   </footer>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 3af7906b1b2f4b2c9d912728ce81ec19cbc268ad
