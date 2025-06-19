@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en" class="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Blaze — the expressive, fearless programming language</title>
+        <meta
+            name="description"
+            content="Blaze is an expressive, fearless programming language. Write fast. Compile native. Own your identity. Real-time REPL, native compilation, and simple but powerful syntax."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav id="nav" class="nav">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <div class="nav-brand">
+                        <div class="nav-logo">🔥</div>
+                        <span class="nav-title">Blaze</span>
+                    </div>
+                    <div class="nav-links hidden-mobile">
+                        <button
+                            onclick="scrollToSection('home')"
+                            class="nav-link"
+                        >
+                            Home
+                        </button>
+                        <button
+                            onclick="scrollToSection('docs')"
+                            class="nav-link"
+                        >
+                            Documentation
+                        </button>
+                        <button
+                            onclick="scrollToSection('examples')"
+                            class="nav-link"
+                        >
+                            Examples
+                        </button>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <a
+                        href="https://github.com/zen-net/blazelang"
+                        target="_blank"
+                        class="github-link"
+                    >
+                        <svg
+                            width="24"
+                            height="24"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+                            />
+                        </svg>
+                    </a>
+                    <button
+                        onclick="scrollToSection('docs')"
+                        class="btn-primary"
+                    >
+                        Get Started
+                    </button>
+                    <button id="mobile-menu" class="mobile-menu-btn hidden">
+                        ☰
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-nav" class="mobile-nav hidden">
+                <button
+                    onclick="scrollToSection('home')"
+                    class="mobile-nav-link"
+                >
+                    Home
+                </button>
+                <button
+                    onclick="scrollToSection('docs')"
+                    class="mobile-nav-link"
+                >
+                    Documentation
+                </button>
+                <button
+                    onclick="scrollToSection('examples')"
+                    class="mobile-nav-link"
+                >
+                    Examples
+                </button>
+            </div>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Blaze</h1>
+                    <p class="hero-tagline">IDE meets IDEntity.</p>
+                    <p class="hero-subtitle">
+                        The expressive, fearless programming language
+                    </p>
+                    <p class="hero-description">
+                        Write fast. Compile native. Own your identity.
+                    </p>
+                    <button onclick="scrollToSection('docs')" class="btn-hero">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Terminal Demo -->
+                <div class="terminal-demo">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <span class="terminal-title">Terminal</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">$ </span>
+                            <span
+                                id="terminal-text"
+                                class="terminal-text"
+                            ></span>
+                            <span id="terminal-cursor" class="terminal-cursor"
+                                >|</span
+                            >
+                        </div>
+                        <div id="terminal-output" class="terminal-output"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Blaze Section -->
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Why Blaze?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-title">Real-time REPL</h3>
+                        <p class="feature-description">
+                            Interactive development environment for rapid
+                            prototyping and testing.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3 class="feature-title">Native Compilation</h3>
+                        <p class="feature-description">
+                            Compile directly to native binaries for maximum
+                            performance.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3 class="feature-title">Expressive Syntax</h3>
+                        <p class="feature-description">
+                            Simple but powerful syntax with memory reference
+                            model using @ and data().
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section class="installation">
+            <div class="container">
+                <h2 class="section-title">Installation</h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <button onclick="copyCode(this)" class="copy-btn">
+                            Copy
+                        </button>
+                    </div>
+                    <pre><code class="language-bash">git clone zen-net/blazelang
+cd blaze
+python blaze.py</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples Section -->
+        <section id="examples" class="examples">
+            <div class="container">
+                <h2 class="section-title">Showcase Examples</h2>
+                <div class="examples-grid">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <h3 class="code-title">hello_world.blaze</h3>
+                            <button onclick="copyCode(this)" class="copy-btn">
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code class="language-rust">// Simple variable assignment
+name = "Kai"
+age = 19
+active = true
+
+// Print variables
+print("Name:", name)
+print("Age:", age)
+print("Is active?", active)
+
+// Using memory
+data(username = "blazedev")
+user = @username
+print("Welcome back,", user)
+
+// Math operations
+a = 5
+b = 3
+sum = a + b
+difference = a - b
+product = a * b
+quotient = a / b
+
+print("Sum:", sum)
+print("Product:", product)</code></pre>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <h3 class="code-title">Project Structure</h3>
+                            <button onclick="copyCode(this)" class="copy-btn">
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code class="language-rust">// Generated from 'blaze new'
+project/
+├── main.blaze
+├── blaze.toml
+└── src/
+    ├── lib.blaze
+    └── utils.blaze
+
+// main.blaze
+use lib::*
+use utils::helpers
+
+fn main() {
+    let app = App::new()
+    app.run()
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documentation Section -->
+        <section id="docs" class="docs">
+            <div class="container">
+                <div class="docs-layout">
+                    <!-- Sidebar -->
+                    <div class="docs-sidebar">
+                        <h3 class="docs-sidebar-title">Documentation</h3>
+                        <nav class="docs-nav">
+                            <button
+                                onclick="showDocsSection('intro')"
+                                class="docs-nav-link active"
+                            >
+                                Introduction
+                            </button>
+                            <button
+                                onclick="showDocsSection('getting-started')"
+                                class="docs-nav-link"
+                            >
+                                Getting Started
+                            </button>
+                            <button
+                                onclick="showDocsSection('core-language')"
+                                class="docs-nav-link"
+                            >
+                                Core Language
+                            </button>
+                            <button
+                                onclick="showDocsSection('advanced')"
+                                class="docs-nav-link"
+                            >
+                                Advanced Topics
+                            </button>
+                        </nav>
+                    </div>
+
+                    <!-- Main Content -->
+                    <div class="docs-content">
+                        <!-- Introduction -->
+                        <div id="docs-intro" class="docs-section active">
+                            <h1 class="docs-title">Introduction</h1>
+
+                            <div class="docs-card">
+                                <h2 class="docs-subtitle">What is Blaze?</h2>
+                                <p>
+                                    Blaze is an expressive, fearless programming
+                                    language designed for developers who want to
+                                    write fast, compile to native binaries, and
+                                    maintain full control over their development
+                                    identity.
+                                </p>
+                                <p>
+                                    Built with the philosophy that your IDE
+                                    should meet your identity, Blaze provides a
+                                    unique development experience that combines
+                                    the best of modern language design with
+                                    powerful memory management capabilities.
+                                </p>
+                            </div>
+
+                            <div class="docs-card">
+                                <h2 class="docs-subtitle">
+                                    Philosophy and Goals
+                                </h2>
+                                <ul>
+                                    <li>
+                                        <strong>Expressive</strong>: Clear,
+                                        readable syntax that makes intent
+                                        obvious
+                                    </li>
+                                    <li>
+                                        <strong>Fearless</strong>: Memory safety
+                                        without sacrificing performance
+                                    </li>
+                                    <li>
+                                        <strong>Fast</strong>: Optimized
+                                        compilation and runtime performance
+                                    </li>
+                                    <li>
+                                        <strong>Native</strong>: Direct
+                                        compilation to platform-specific
+                                        binaries
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Getting Started -->
+                        <div id="docs-getting-started" class="docs-section">
+                            <h1 class="docs-title">Getting Started</h1>
+
+                            <div class="docs-block">
+                                <h2 class="docs-subtitle">Installation</h2>
+                                <div class="code-block">
+                                    <button
+                                        onclick="copyCode(this)"
+                                        class="copy-btn"
+                                    >
+                                        Copy
+                                    </button>
+                                    <pre><code class="language-bash">git clone zen-net/blazelang
+cd blaze
+python blaze.py</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="docs-block">
+                                <h2 class="docs-subtitle">
+                                    Creating a New Project
+                                </h2>
+                                <div class="code-block">
+                                    <button
+                                        onclick="copyCode(this)"
+                                        class="copy-btn"
+                                    >
+                                        Copy
+                                    </button>
+                                    <pre><code class="language-bash">blaze new my_project
+cd my_project</code></pre>
+                                </div>
+                                <p>
+                                    This creates a new Blaze project with the
+                                    standard directory structure and
+                                    configuration files.
+                                </p>
+                            </div>
+
+                            <div class="docs-block">
+                                <h2 class="docs-subtitle">
+                                    Compiling Your Code
+                                </h2>
+                                <div class="code-block">
+                                    <button
+                                        onclick="copyCode(this)"
+                                        class="copy-btn"
+                                    >
+                                        Copy
+                                    </button>
+                                    <pre><code class="language-bash">blaze compile</code></pre>
+                                </div>
+                                <p>
+                                    Compiles your Blaze code to a native binary
+                                    executable.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Core Language -->
+                        <div id="docs-core-language" class="docs-section">
+                            <h1 class="docs-title">Core Language</h1>
+
+                            <div class="docs-block">
+                                <h2 class="docs-subtitle">Variables & Types</h2>
+                                <div class="code-block">
+                                    <button
+                                        onclick="copyCode(this)"
+                                        class="copy-btn"
+                                    >
+                                        Copy
+                                    </button>
+                                    <pre><code class="language-rust">// Simple variable assignment
+name = "Kai"
+age = 19
+active = true
+
+// Print variables
+print("Name:", name)
+print("Age:", age)
+print("Is active?", active)</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="docs-block">
+                                <h2 class="docs-subtitle">
+                                    Memory: data() and @
+                                </h2>
+                                <div class="code-block">
+                                    <button
+                                        onclick="copyCode(this)"
+                                        class="copy-btn"
+                                    >
+                                        Copy
+                                    </button>
+                                    <pre><code class="language-rust">// Using memory
+data(username = "blazedev")
+user = @username
+print("Welcome back,", user)
+
+// Math operations
+a = 5
+b = 3
+sum = a + b
+product = a * b
+print("Sum:", sum)
+print("Product:", product)</code></pre>
+                                </div>
+                                <p>
+                                    The @ symbol creates memory references,
+                                    while data() allocates managed memory for
+                                    complex data structures.
+                                </p>
+                            </div>
+
+                            <div class="docs-block">
+                                <h2 class="docs-subtitle">
+                                    Built-in Functions
+                                </h2>
+                                <div class="code-block">
+                                    <button
+                                        onclick="copyCode(this)"
+                                        class="copy-btn"
+                                    >
+                                        Copy
+                                    </button>
+                                    <pre><code class="language-rust">// Built-in print function
+print("Hello, World!")
+
+// Math operations
+a = 5
+b = 3
+difference = a - b
+quotient = a / b
+
+print("Difference:", difference)
+print("Quotient:", quotient)</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Topics -->
+                        <div id="docs-advanced" class="docs-section">
+                            <h1 class="docs-title">Advanced Topics</h1>
+
+                            <div class="docs-block">
+                                <h2 class="docs-subtitle">
+                                    Compilation to Binary
+                                </h2>
+                                <p>
+                                    Blaze compiles directly to native machine
+                                    code, providing optimal performance for your
+                                    applications.
+                                </p>
+                                <div class="code-block">
+                                    <button
+                                        onclick="copyCode(this)"
+                                        class="copy-btn"
+                                    >
+                                        Copy
+                                    </button>
+                                    <pre><code class="language-bash">blaze compile --release --target x86_64-linux
+blaze compile --release --target arm64-macos
+blaze compile --release --target x86_64-windows</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="docs-block">
+                                <h2 class="docs-subtitle">File Structure</h2>
+                                <div class="code-block">
+                                    <button
+                                        onclick="copyCode(this)"
+                                        class="copy-btn"
+                                    >
+                                        Copy
+                                    </button>
+                                    <pre><code class="language-toml">// blaze.toml
+[package]
+name = "my_app"
+version = "0.1.0"
+author = "Your Name"
+
+[dependencies]
+# External dependencies go here
+
+[build]
+target = "native"
+optimization = "release"</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="docs-card">
+                                <h2 class="docs-subtitle">Planned Features</h2>
+                                <ul>
+                                    <li>
+                                        <strong>Module System</strong>: Advanced
+                                        import/export capabilities
+                                    </li>
+                                    <li>
+                                        <strong>Package Manager</strong>:
+                                        Built-in dependency management
+                                    </li>
+                                    <li>
+                                        <strong>Async/Await</strong>: Native
+                                        asynchronous programming support
+                                    </li>
+                                    <li>
+                                        <strong>Generic Types</strong>:
+                                        Type-safe generic programming
+                                    </li>
+                                    <li>
+                                        <strong>FFI</strong>: Foreign function
+                                        interface for C/C++ interop
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="nav-logo">🔥</div>
+                        <span class="nav-title">Blaze</span>
+                    </div>
+                    <div class="footer-links">
+                        <a
+                            href="https://github.com/zen-net/blazelang"
+                            target="_blank"
+                            class="footer-link"
+                        >
+                            <svg
+                                width="20"
+                                height="20"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+                                />
+                            </svg>
+                            GitHub
+                        </a>
+                        <span class="footer-link disabled"
+                            >Discord (Coming Soon)</span
+                        >
+                        <span class="footer-link disabled"
+                            >Matrix (Coming Soon)</span
+                        >
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>Built with fire by Kai</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>
