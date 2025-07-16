@@ -2,9 +2,10 @@
 class TerminalDemo {
     constructor() {
         this.commands = [
-            { cmd: "blaze new hello_world", output: "Creating new Blaze project 'hello_world'...\n✓ Project created successfully!" },
+            { cmd: "dash new hello_world", output: "Creating new Dash project 'hello_world'...\n✓ Project created successfully!" },
             { cmd: "cd hello_world", output: "" },
-            { cmd: "blaze compile", output: "Compiling hello_world v0.1.0\n✓ Compiled successfully to ./target/hello_world" },
+            { cmd: "dash compile", output: "Compiling hello_world v0.1.0
+✓ Compiled successfully to ./target/hello_world" },
             { cmd: "./target/hello_world", output: "Hello, World!" }
         ];
         
@@ -429,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add loading complete class
     document.body.classList.add('loaded');
     
-    console.log('🔥 Blaze website initialized successfully!');
+    console.log('🚀 Dash website initialized successfully!');
 });
 
 // Service Worker registration for offline support

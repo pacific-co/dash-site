@@ -1,0 +1,22 @@
+{
+    "project": "Dash Language",
+    "block": {
+      "name": "Rebrand Site and Example Code",
+      "status": "WIP",
+      "tasks": [
+        "Update website with new Dash branding",
+        "Replace all Blaze references with Dash",
+        "Update example code to reflect new syntax/naming",
+        "Ensure consistency in logos, icons, and messaging"
+      ]
+    },
+    "designResources": {
+      "colorPalette": {
+        "primaryGradient": ["#833AB4", "#FD1D1D", "#FCB045"],
+        "background": "#FFFFFF",
+        "text": "#141414",
+        "accent": "#F56040"
+      }
+    }
+  }
+  
